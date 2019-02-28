@@ -1,9 +1,9 @@
 // cross out items on the list and change color
-$("li").click(function () {
+$("ul").on("click", "li" ,function () {
     $(this).toggleClass("completed");
 });
 
-$("span").click(function (event) {
+$("ul").on("click", "span", function (event) {
     $(this).parent().fadeOut(500, function () {
         $(this).remove();
     });
@@ -11,8 +11,12 @@ $("span").click(function (event) {
 });
 
 $("input[type='text']").keypress(function (event) {
-    if(event.which ===13){
+    if(event.which === 13){
         var text = $(this).val();
-        $("ul").append("<li><span>X</span> "+text+"</li>");
+        $("ul").append("<li><span><i class=\"fas fa-trash-alt\"></i></span> "+text+"</li>");
     }
+});
+
+$(".fa-plus").click(function () {
+    $("input[type='text']").fadeToggle();
 })
